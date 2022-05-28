@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+from socket import gethostname, gethostbyname
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,12 @@ SECRET_KEY = "django-insecure-s2a7q5@)zu8j!^oisrdi)lp%_1ui@etqalc&el9kwmf1a6(x*#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dunnomate-dev.eu-west-2.elasticbeanstalk.com']
+ALLOWED_HOSTS = [
+    gethostname(),
+    gethostbyname(gethostname()),
+    '127.0.0.1',
+    'dunnomate-dev.eu-west-2.elasticbeanstalk.com'
+]
 
 
 # Application definition
