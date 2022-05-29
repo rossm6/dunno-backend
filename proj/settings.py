@@ -31,7 +31,8 @@ ALLOWED_HOSTS = [
     gethostname(),
     gethostbyname(gethostname()),
     '127.0.0.1',
-    'dunnomate-dev.eu-west-2.elasticbeanstalk.com'
+    'dunnomate-dev.eu-west-2.elasticbeanstalk.com',
+    'backend.dunnomate.com'
 ]
 
 
