@@ -1,4 +1,5 @@
 from random import sample
+import copy
 
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
@@ -35,6 +36,11 @@ def shuffle_game(game):
     This way we also make the correct answer more random.
     """
     odd_one_out_index = game["game"]["odd_one_out_index"]
+
+    print(game["game"])
+    print(game["game"]["squares"])
+    print(odd_one_out_index)
+
     odd_one_out_square = game["game"]["squares"][odd_one_out_index]
 
     true_shuffle(game["game"]["squares"])
@@ -87,8 +93,8 @@ def get_odd_one_out_practice_game(request):
     data = {}
     games = []
 
-    n_3_level_1 = [game for game in N_3_GAMES if game["level"] == 1]
-    n_3_level_2 = [game for game in N_3_GAMES if game["level"] == 2]
+    n_3_level_1 = [copy.deepcopy(game) for game in N_3_GAMES if game["level"] == 1]
+    n_3_level_2 = [copy.deepcopy(game) for game in N_3_GAMES if game["level"] == 2]
 
     games = games + [
         {"n": 3, "game": game}
@@ -110,8 +116,8 @@ def get_odd_one_out_game(request):
     data = {}
     games = []
 
-    n_3_level_1 = [game for game in N_3_GAMES if game["level"] == 1]
-    n_3_level_2 = [game for game in N_3_GAMES if game["level"] == 2]
+    n_3_level_1 = [copy.deepcopy(game) for game in N_3_GAMES if game["level"] == 1]
+    n_3_level_2 = [copy.deepcopy(game) for game in N_3_GAMES if game["level"] == 2]
 
     games = games + [
         {"n": 3, "game": game}
@@ -120,7 +126,6 @@ def get_odd_one_out_game(request):
 
     for game in games:
         shuffle_game(game)
-        print(game["game"]["odd_one_out_index"])
         game["game"]["odd_one_out_index"] = caesar_cipher(
             str(game["game"]["odd_one_out_index"]), CAESAR_CIPHER_SHIFT
         )
