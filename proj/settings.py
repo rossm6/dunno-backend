@@ -52,10 +52,15 @@ INSTALLED_APPS = [
     "storages"
 ]
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000"]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000", 
+    "http://127.0.0.1:3000", 
+    "https://backend.dunnomate.com", 
+    "http://backend.dunnomate.com"
+]
 
 # NEW IN DJANGO VERSION 4
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "https://backend.dunnomate.com", "http://backend.dunnomate.com"]
 
 CORS_ALLOW_CREDENTIALS = True
 SESSION_COOKIE_SAMESITE = "None"
