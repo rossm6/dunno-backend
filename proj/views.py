@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.urls import reverse
 from django.views.decorators.csrf import ensure_csrf_cookie
+from django.middleware.csrf import get_token
 
 from games.views import CAESAR_CIPHER_SHIFT
 
@@ -25,6 +26,7 @@ def init(request):
         },
         "games": {"keypad": "K", "odd_one_out": "OOO", "anagram": "A"},
         "CAESAR_CIPHER_SHIFT": CAESAR_CIPHER_SHIFT,
+        "csrftoken": get_token(request)
     }
 
     return JsonResponse(data=data)
