@@ -36,11 +36,6 @@ def shuffle_game(game):
     This way we also make the correct answer more random.
     """
     odd_one_out_index = game["game"]["odd_one_out_index"]
-
-    print(game["game"])
-    print(game["game"]["squares"])
-    print(odd_one_out_index)
-
     odd_one_out_square = game["game"]["squares"][odd_one_out_index]
 
     true_shuffle(game["game"]["squares"])
