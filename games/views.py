@@ -120,7 +120,6 @@ def get_odd_one_out_game(request):
 
     for game in games:
         shuffle_game(game)
-        print(game["game"]["odd_one_out_index"])
         game["game"]["odd_one_out_index"] = caesar_cipher(
             str(game["game"]["odd_one_out_index"]), CAESAR_CIPHER_SHIFT
         )
