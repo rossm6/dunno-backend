@@ -19,7 +19,7 @@ from django.urls import include, path
 from .views import init
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    # path("admin/", admin.site.urls),
     path("api/init", init, name="init"),
     path("api/games/", include("games.urls")),
 ]
