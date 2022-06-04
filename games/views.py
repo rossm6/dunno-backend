@@ -78,7 +78,6 @@ def get_anagrams_game(request):
         word = pick_random_word(words)
         anagram = get_anagram_and_solution_from_word(word)
         anagrams[word_length] = anagram
-        print(anagram["solution"])
         anagram["solution"] = caesar_cipher((anagram["solution"]), CAESAR_CIPHER_SHIFT)
 
     return JsonResponse(data={"games": list(anagrams.values())})
@@ -121,6 +120,7 @@ def get_odd_one_out_game(request):
 
     for game in games:
         shuffle_game(game)
+        print(game["game"]["odd_one_out_index"])
         game["game"]["odd_one_out_index"] = caesar_cipher(
             str(game["game"]["odd_one_out_index"]), CAESAR_CIPHER_SHIFT
         )
