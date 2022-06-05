@@ -18,7 +18,7 @@ CAESAR_CIPHER_SHIFT = 67
 
 
 def get_points(points):
-    return [{"score": point["score"], "percentage": point["percentage"]} for point in points]
+    return [{"score": point["score"], "percentage": point["percentage"], "total": point["total"]} for point in points]
 
 
 def get_bell_curve(request):
