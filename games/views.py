@@ -87,11 +87,11 @@ def get_odd_one_out_practice_game(request):
     data = {}
     games = []
 
-    n_3_level_1 = [copy.deepcopy(game) for game in N_3_GAMES if game["level"] == 1]
-    n_3_level_2 = [copy.deepcopy(game) for game in N_3_GAMES if game["level"] == 2]
+    n_3_level_1 = [game for game in N_3_GAMES if game["level"] == 1]
+    n_3_level_2 = [game for game in N_3_GAMES if game["level"] == 2]
 
     games = games + [
-        {"n": 3, "game": game}
+        {"n": 3, "game": copy.deepcopy(game)}
         for game in pick_n_random(n_3_level_1, 1) + pick_n_random(n_3_level_2, 1)
     ]
 
@@ -110,11 +110,11 @@ def get_odd_one_out_game(request):
     data = {}
     games = []
 
-    n_3_level_1 = [copy.deepcopy(game) for game in N_3_GAMES if game["level"] == 1]
-    n_3_level_2 = [copy.deepcopy(game) for game in N_3_GAMES if game["level"] == 2]
+    n_3_level_1 = [game for game in N_3_GAMES if game["level"] == 1]
+    n_3_level_2 = [game for game in N_3_GAMES if game["level"] == 2]
 
     games = games + [
-        {"n": 3, "game": game}
+        {"n": 3, "game": copy.deepcopy(game)}
         for game in pick_n_random(n_3_level_1, 5) + pick_n_random(n_3_level_2, 30)
     ]
 
